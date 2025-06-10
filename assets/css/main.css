@@ -22,7 +22,7 @@
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #2c4964; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #1977cc; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #07c42175; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -923,6 +923,7 @@ section,
   overflow: hidden;
 }
 
+
 .hero img {
   position: absolute;
   inset: 0;
@@ -951,12 +952,16 @@ section,
 .hero .content {
   margin-top: 40px;
 }
+/* .why-box{
+  width: 710px;
+} */
 
 .hero .content .why-box {
   color: var(--contrast-color);
   background: var(--accent-color);
   padding: 30px;
   border-radius: 4px;
+
 }
 
 .hero .content .why-box h3 {
@@ -968,6 +973,7 @@ section,
 
 .hero .content .why-box p {
   margin-bottom: 30px;
+  
 }
 
 .hero .content .why-box .more-btn {
@@ -987,7 +993,9 @@ section,
   background: var(--surface-color);
   color: var(--accent-color);
 }
-
+.col-xl-4 d-flex align-items-stretch{
+  padding: 20px;
+}
 .hero .content .icon-box {
   text-align: center;
   border-radius: 10px;
@@ -1724,6 +1732,17 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+
+
+.services{
+  border-color: blue;
+  border: 30px;
+border-color: rgb(20, 202, 132);
+  border-style: dashed;
+  /* width: 500px;
+  height: 200px; */
+}
+.video1234{
+width: 500;
+height: auto;
 }
