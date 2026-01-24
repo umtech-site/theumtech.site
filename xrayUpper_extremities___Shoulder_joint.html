@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upper Extremities Anatomy Study Cards</title>
+    <style>
+        /* New CSS for image handling */
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        .anatomy-table {
+            width: 100%;
+            font-size: 0.7rem;
+            border-collapse: collapse;
+            margin: 4px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .anatomy-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 3px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .anatomy-table td {
+            padding: 3px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .anatomy-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .quick-revision {
+            background: rgba(231, 76, 60, 0.1);
+            padding: 4px;
+            border-left: 3px solid var(--accent-color);
+            margin: 4px 0;
+            font-size: 0.7rem;
+            border-radius: 2px;
+        }
+        
+        .xray-anatomy {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 4px;
+            border-left: 3px solid #3498db;
+            margin: 4px 0;
+            font-size: 0.7rem;
+            border-radius: 2px;
+        }
+        
+        /* Rest of the CSS remains exactly as before */
+        :root {
+            --primary-color: #9b59b6;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --text-color: #ecf0f1;
+            --bg-color: #2c3e50;
+            --card-bg: #34495e;
+            --header-bg: linear-gradient(135deg, #9b59b6, #34495e);
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --card-height: 200px;
+        }
+
+        /* All other CSS styles remain exactly the same... */
+        .theme-blue {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #1abc9c;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --header-bg: linear-gradient(135deg, #3498db, #2c3e50);
+        }
+
+        .theme-green {
+            --primary-color: #27ae60;
+            --secondary-color: #2ecc71;
+            --accent-color: #16a085;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --header-bg: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .theme-purple {
+            --primary-color: #9b59b6;
+            --secondary-color: #8e44ad;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --header-bg: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+
+        .theme-orange {
+            --primary-color: #e67e22;
+            --secondary-color: #d35400;
+            --accent-color: #f39c12;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --header-bg: linear-gradient(135deg, #e67e22, #d35400);
+        }
+
+        .night-mode {
+            --primary-color: #9b59b6;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --text-color: #ecf0f1;
+            --bg-color: #2c3e50;
+            --card-bg: #34495e;
+            --header-bg: linear-gradient(135deg, #9b59b6, #34495e);
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 10px;
+            transition: all 0.5s ease;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* X-ray Background Animation */
+        .xray-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            overflow: hidden;
+        }
+
+        .xray-triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            opacity: 0.1;
+            animation: floatTriangle 15s infinite linear;
+        }
+
+        .triangle-1 {
+            border-width: 0 50px 100px 50px;
+            border-color: transparent transparent #9b59b6 transparent;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .triangle-2 {
+            border-width: 100px 50px 0 50px;
+            border-color: #3498db transparent transparent transparent;
+            top: 60%;
+            left: 80%;
+            animation-delay: 3s;
+        }
+
+        .triangle-3 {
+            border-width: 50px 0 50px 100px;
+            border-color: transparent transparent transparent #e74c3c;
+            top: 30%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        .triangle-4 {
+            border-width: 50px 100px 50px 0;
+            border-color: transparent #1abc9c transparent transparent;
+            top: 70%;
+            left: 20%;
+            animation-delay: 9s;
+        }
+
+        .triangle-5 {
+            border-width: 100px 50px 0 50px;
+            border-color: #f39c12 transparent transparent transparent;
+            top: 40%;
+            left: 40%;
+            animation-delay: 12s;
+        }
+
+        @keyframes floatTriangle {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.1;
+            }
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translateY(0) rotate(180deg);
+                opacity: 0.1;
+            }
+            75% {
+                transform: translateY(20px) rotate(270deg);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 0.1;
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: var(--header-bg);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+            animation: fadeInDown 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        .arm-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .arm-icon svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+            flex-shrink: 0;
+            animation: fadeIn 1s ease-out 0.3s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-selector, .zoom-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .theme-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-icon.active {
+            border-color: white;
+            box-shadow: 0 0 0 2px var(--accent-color), 0 4px 8px rgba(0, 0, 0, 0.3);
+            transform: scale(1.1);
+        }
+
+        .theme-blue-icon {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+        }
+
+        .theme-green-icon {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .theme-purple-icon {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+
+        .theme-orange-icon {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+        }
+
+        .night-mode-icon {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .zoom-level {
+            background: var(--card-bg);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 0.8rem;
+            min-width: 80px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            transition: all 0.5s ease;
+            overflow-y: auto;
+            padding: 5px;
+            flex-grow: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            background: var(--header-bg);
+            color: white;
+            padding: 8px;
+            border-radius: 6px 6px 0 0;
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+            text-align: center;
+            grid-column: 1 / -1;
+            animation: slideInLeft 0.6s ease-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            height: var(--card-height);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease-out;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        .card:active {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card.clickable::after {
+            content: "Click for Details";
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: var(--accent-color);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover.clickable::after {
+            opacity: 1;
+        }
+
+        .card-header {
+            padding: 8px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .card-content {
+            padding: 8px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 70px;
+            background: linear-gradient(135deg, #4a5f7a, #3a4a5f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bdc3c7;
+            font-style: italic;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card:hover .card-image::before {
+            left: 100%;
+        }
+
+        .theme-blue .card-image,
+        .theme-green .card-image,
+        .theme-purple .card-image,
+        .theme-orange .card-image {
+            background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+            color: #777;
+        }
+
+        .card-details {
+            font-size: 0.7rem;
+            line-height: 1.3;
+            overflow-y: auto;
+            flex-grow: 1;
+            transition: all 0.3s ease;
+        }
+
+        .card-details p {
+            margin: 0 0 4px 0;
+        }
+
+        .zoom-1 { transform: scale(0.7); }
+        .zoom-2 { transform: scale(0.85); }
+        .zoom-3 { transform: scale(1); }
+        .zoom-4 { transform: scale(1.15); }
+        .zoom-5 { transform: scale(1.3); }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Custom scrollbar for webkit browsers */
+        .container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .container::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .container::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
+        .card-details::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .card-details::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 2px;
+        }
+
+        .card-details::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .theme-selector, .zoom-controls {
+                justify-content: center;
+            }
+            
+            :root {
+                --card-height: 220px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .arm-icon {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .card.clickable::after {
+                font-size: 0.5rem;
+                padding: 1px 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+            
+            :root {
+                --card-height: 240px;
+            }
+        }
+    </style>
+</head>
+<body class="night-mode">
+    <!-- X-ray Background Animation -->
+    <div class="xray-background">
+        <div class="xray-triangle triangle-1"></div>
+        <div class="xray-triangle triangle-2"></div>
+        <div class="xray-triangle triangle-3"></div>
+        <div class="xray-triangle triangle-4"></div>
+        <div class="xray-triangle triangle-5"></div>
+    </div>
+
+    <div class="header">
+        <div class="arm-icon">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Shoulder joint -->
+                <circle cx="30" cy="30" r="12" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                
+                <!-- Humerus bone -->
+                <rect x="25" y="30" width="10" height="40" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                
+                <!-- Scapula shape -->
+                <path d="M 20 25 Q 15 20 10 25 Q 15 35 20 40 Z" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                
+                <!-- Clavicle bone -->
+                <line x1="15" y1="25" x2="45" y2="15" stroke="#333" stroke-width="3"/>
+                
+                <!-- Elbow joint -->
+                <circle cx="30" cy="75" r="8" fill="#f5f5f5" stroke="#333" stroke-width="2"/>
+                
+                <!-- Radius and Ulna -->
+                <rect x="28" y="75" width="4" height="15" fill="#f5f5f5" stroke="#333" stroke-width="1"/>
+                <rect x="32" y="75" width="4" height="15" fill="#f5f5f5" stroke="#333" stroke-width="1"/>
+            </svg>
+        </div>
+        <div>
+            <h1>Upper Extremities Anatomy Study Cards</h1>
+            <p>"And We created you in pairs" - Surah An-Naba 78:8</p>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="theme-selector">
+            <div class="theme-icon theme-blue-icon" data-theme="theme-blue"></div>
+            <div class="theme-icon theme-green-icon" data-theme="theme-green"></div>
+            <div class="theme-icon theme-purple-icon" data-theme="theme-purple"></div>
+            <div class="theme-icon theme-orange-icon" data-theme="theme-orange"></div>
+            <div class="theme-icon night-mode-icon active" data-theme="night-mode">NM</div>
+        </div>
+        <div class="zoom-controls">
+            <button id="zoom-out">Zoom Out</button>
+            <div class="zoom-level">Zoom: 100%</div>
+            <button id="zoom-in">Zoom In</button>
+        </div>
+    </div>
+
+    <div class="container" id="card-container">
+        <!-- Shoulder Region Section -->
+        <h2 class="section-title">Shoulder Girdle & Joint (6 bones)</h2>
+        
+        <div class="card clickable" data-part="clavicle">
+            <div class="card-header">Clavicle</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/clavicle.jpg" alt="Clavicle Diagram">
+                </div>
+                <div class="card-details">
+                    <p><strong>Location:</strong> Collarbone</p>
+                    <p><strong>Function:</strong> Connects arm to trunk, brace for shoulder</p>
+                    <p><strong>Joints:</strong> Sternoclavicular, Acromioclavicular</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="scapula">
+            <div class="card-header">Scapula</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/scapula.png" alt="Scapula Diagram">
+                </div>
+                <div class="card-details">
+                    <p><strong>Location:</strong> Shoulder blade</p>
+                    <p><strong>Function:</strong> Attachment for shoulder muscles</p>
+                    <p><strong>Landmarks:</strong> Spine, Acromion, Coracoid</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="humerus">
+            <div class="card-header">Humerus (Proximal)</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/humerus.png" alt="Humerus Diagram">
+                </div>
+                <div class="card-details">
+                    <p><strong>Location:</strong> Upper arm bone</p>
+                    <p><strong>Function:</strong> Forms shoulder joint, attachment for arm muscles</p>
+                    <p><strong>Landmarks:</strong> Head, Neck, Greater/Lesser Tubercles</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card clickable" data-part="acromioclavicular">
+            <div class="card-header">Acromioclavicular Joint</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/ac-joint.png" alt="AC Joint Diagram">
+                </div>
+                <div class="card-details">
+                    <p><strong>Type:</strong> Plane synovial joint</p>
+                    <p><strong>Function:</strong> Connects scapula to clavicle</p>
+                    <p><strong>Motion:</strong> Limited gliding movement</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="sternoclavicular">
+            <div class="card-header">Sternoclavicular Joint</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/sc-joint.png" alt="SC Joint Diagram">
+                </div>
+                <div class="card-details">
+                    <p><strong>Type:</strong> Saddle synovial joint</p>
+                    <p><strong>Function:</strong> Connects clavicle to sternum</p>
+                    <p><strong>Motion:</strong> Elevation, depression, protraction, retraction</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="glenohumeral">
+            <div class="card-header">Glenohumeral Joint</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/gh-joint.png" alt="Shoulder Joint Diagram">
+                </div>
+                <div class="card-details">
+                    <p><strong>Type:</strong> Ball-and-socket synovial joint</p>
+                    <p><strong>Function:</strong> Main shoulder joint, widest ROM</p>
+                    <p><strong>Stability:</strong> Rotator cuff muscles, ligaments</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ELBOW REGION - CORRECTED VERSION -->
+        <h2 class="section-title">Elbow Region (Joint Formed by 3 Bone Ends)</h2>
+        
+        <div class="card clickable" data-part="humerus-distal-elbow">
+            <div class="card-header">Distal Humerus (Elbow Part)</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/humerus.png" alt="Distal Humerus">
+                </div>
+                <div class="card-details">
+                    <p><strong>Part of Upper Arm Bone:</strong></p>
+                    <p>• <strong>Trochlea:</strong> Spool-shaped, articulates with ulna</p>
+                    <p>• <strong>Capitulum:</strong> Knob-like, articulates with radius</p>
+                    <p>• <strong>Medial Epicondyle:</strong> "Funny bone" bump</p>
+                    <p>• <strong>Lateral Epicondyle:</strong> Extensor muscle origin</p>
+                    <p><em>This is just the bottom part of the humerus bone</em></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="ulna-proximal-elbow">
+            <div class="card-header">Proximal Ulna (Elbow Part)</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/ulna.png" alt="Proximal Ulna">
+                </div>
+                <div class="card-details">
+                    <p><strong>Top of Inner Forearm Bone:</strong></p>
+                    <p>• <strong>Olecranon Process:</strong> Forms elbow tip</p>
+                    <p>• <strong>Coronoid Process:</strong> Anterior projection</p>
+                    <p>• <strong>Trochlear Notch:</strong> C-shaped hinge groove</p>
+                    <p>• <strong>Radial Notch:</strong> Articulates with radius</p>
+                    <p><em>This is just the top part of the ulna bone</em></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="radius-proximal-elbow">
+            <div class="card-header">Proximal Radius (Elbow Part)</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/Radius.png" alt="Proximal Radius">
+                </div>
+                <div class="card-details">
+                    <p><strong>Top of Outer Forearm Bone:</strong></p>
+                    <p>• <strong>Radial Head:</strong> Disc-shaped, rotates</p>
+                    <p>• <strong>Radial Neck:</strong> Constriction below head</p>
+                    <p>• <strong>Radial Tuberosity:</strong> Biceps tendon attachment</p>
+                    <p>• <strong>Annular Ligament:</strong> Stabilizes radial head</p>
+                    <p><em>This is just the top part of the radius bone</em></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="elbow-joint-explanation">
+            <div class="card-header">Elbow Joint Itself</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/elbow-joint.png" alt="Elbow Articulation">
+                </div>
+                <div class="card-details">
+                    <p><strong>NOT separate bones!</strong></p>
+                    <p><strong>A Joint Where 3 Bone Ends Meet:</strong></p>
+                    <p>• Distal Humerus (bottom part)</p>
+                    <p>• Proximal Ulna (top part)</p>
+                    <p>• Proximal Radius (top part)</p>
+                    <p><strong>3 Articulations:</strong></p>
+                    <p>• Humeroulnar (hinge)</p>
+                    <p>• Humeroradial (pivot)</p>
+                    <p>• Proximal Radioulnar (pivot)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOREARM REGION - SEPARATED -->
+        <h2 class="section-title">Forearm Region (2 Long Bones)</h2>
+        
+        <div class="card clickable" data-part="radius-shaft">
+            <div class="card-header">Radius (Shaft)</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/Radius.png" alt="Radius Shaft">
+                </div>
+                <div class="card-details">
+                    <p><strong>Location:</strong> Lateral forearm bone</p>
+                    <p><strong>Function:</strong> Rotates around ulna</p>
+                    <p><strong>Movement:</strong> Supination/pronation</p>
+                    <p><strong>Distal End:</strong> Articulates with carpal bones</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="ulna-shaft">
+            <div class="card-header">Ulna (Shaft)</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/ulna.png" alt="Ulna Shaft">
+                </div>
+                <div class="card-details">
+                    <p><strong>Location:</strong> Medial forearm bone</p>
+                    <p><strong>Function:</strong> Stable reference bone</p>
+                    <p><strong>Distal End:</strong> Styloid process, triangular fibrocartilage</p>
+                    <p><strong>Note:</strong> Does not directly articulate with carpal bones</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WRIST REGION - SEPARATED -->
+        <h2 class="section-title">Wrist Region (8 Carpal Bones)</h2>
+        
+        <div class="card clickable" data-part="proximal-carpal-row">
+            <div class="card-header">Proximal Carpal Row</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/wrist-proximal distal.png" alt="Proximal Carpals">
+                </div>
+                <div class="card-details">
+                    <p><strong>Bones (4):</strong></p>
+                    <p>• <strong>Scaphoid:</strong> Most lateral, articulates with radius</p>
+                    <p>• <strong>Lunate:</strong> Crescent-shaped, articulates with radius</p>
+                    <p>• <strong>Triquetrum:</strong> Pyramid-shaped, articulates with TFCC</p>
+                    <p>• <strong>Pisiform:</strong> Sesamoid bone in flexor carpi ulnaris</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="distal-carpal-row">
+            <div class="card-header">Distal Carpal Row</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/wrist-proximal distal.png" alt="Distal Carpals">
+                </div>
+                <div class="card-details">
+                    <p><strong>Bones (4):</strong></p>
+                    <p>• <strong>Trapezium:</strong> Saddle joint with 1st metacarpal</p>
+                    <p>• <strong>Trapezoid:</strong> Smallest carpal, wedge-shaped</p>
+                    <p>• <strong>Capitate:</strong> Largest carpal, head articulates with lunate</p>
+                    <p>• <strong>Hamate:</strong> Has hook (hamulus) for ligament attachment</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="wrist-joint-complex">
+            <div class="card-header">Wrist Joint Complex</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/wrist2.png" alt="Wrist Joint">
+                </div>
+                <div class="card-details">
+                    <p><strong>Type:</strong> Condyloid synovial joint</p>
+                    <p><strong>Main Joint:</strong> Radiocarpal joint</p>
+                    <p><strong>Movements:</strong> Flexion/Extension, Radial/Ulnar deviation</p>
+                    <p><strong>Stability:</strong> Multiple ligaments, triangular fibrocartilage complex</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- HAND & FINGERS Section -->
+        <h2 class="section-title">Hand & Fingers (19 bones)</h2>
+        
+        <div class="card clickable" data-part="metacarpals">
+            <div class="card-header">Metacarpals (5)</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/metacarpals.png" alt="Metacarpals">
+                </div>
+                <div class="card-details">
+                    <p><strong>Location:</strong> Palm bones</p>
+                    <p><strong>Numbering:</strong> I (thumb) to V (little finger)</p>
+                    <p><strong>Joints:</strong> Carpometacarpal (CMC), Metacarpophalangeal (MCP)</p>
+                    <p><strong>Special:</strong> 1st metacarpal (thumb) has saddle CMC joint</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="phalanges">
+            <div class="card-header">Phalanges (14)</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/phalanges.png" alt="Phalanges">
+                </div>
+                <div class="card-details">
+                    <p><strong>Location:</strong> Finger bones</p>
+                    <p><strong>Segments:</strong></p>
+                    <p>• Proximal phalanges (5)</p>
+                    <p>• Middle phalanges (4) - thumb has none</p>
+                    <p>• Distal phalanges (5)</p>
+                    <p><strong>Joints:</strong> PIP, DIP joints (hinge type)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card clickable" data-part="thumb-special">
+            <div class="card-header">Thumb (Pollex)</div>
+            <div class="card-content">
+                <div class="card-image">
+                    <img src="images/thumb.png" alt="Thumb">
+                </div>
+                <div class="card-details">
+                    <p><strong>Unique Features:</strong></p>
+                    <p>• Only 2 phalanges (others have 3)</p>
+                    <p>• Saddle CMC joint allows opposition</p>
+                    <p>• Wider range of motion</p>
+                    <p>• Muscles: Thenar eminence, adductor pollicis</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme switching functionality
+        const themeIcons = document.querySelectorAll('.theme-icon');
+        
+        // Set night mode as default
+        document.body.classList.add('night-mode');
+        
+        themeIcons.forEach(icon => {
+            icon.addEventListener('click', function() {
+                // Remove active class from all icons
+                themeIcons.forEach(i => i.classList.remove('active'));
+                
+                // Add active class to clicked icon
+                this.classList.add('active');
+                
+                // Get the theme from data attribute
+                const theme = this.getAttribute('data-theme');
+                
+                // Remove all theme classes from body
+                document.body.classList.remove('theme-blue', 'theme-green', 'theme-purple', 'theme-orange', 'night-mode');
+                
+                // Add the selected theme class
+                document.body.classList.add(theme);
+            });
+        });
+
+        // Zoom functionality
+        let currentZoom = 3;
+        const zoomLevels = ['70%', '85%', '100%', '115%', '130%'];
+        const container = document.getElementById('card-container');
+        const zoomDisplay = document.querySelector('.zoom-level');
+
+        document.getElementById('zoom-in').addEventListener('click', function() {
+            if (currentZoom < 5) {
+                currentZoom++;
+                updateZoom();
+            }
+        });
+
+        document.getElementById('zoom-out').addEventListener('click', function() {
+            if (currentZoom > 1) {
+                currentZoom--;
+                updateZoom();
+            }
+        });
+
+        function updateZoom() {
+            // Remove all zoom classes
+            container.classList.remove('zoom-1', 'zoom-2', 'zoom-3', 'zoom-4', 'zoom-5');
+            // Add current zoom class
+            container.classList.add(`zoom-${currentZoom}`);
+            // Update zoom display
+            zoomDisplay.textContent = `Zoom: ${zoomLevels[currentZoom-1]}`;
+        }
+
+        // Initialize zoom
+        updateZoom();
+        
+        // Add staggered animation to cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.05}s`;
+            });
+        });
+
+        // Make cards clickable
+        document.querySelectorAll('.card.clickable').forEach(card => {
+            card.addEventListener('click', function() {
+                const partName = this.getAttribute('data-part');
+                const cardTitle = this.querySelector('.card-header').textContent;
+                alert(`Clicked: ${cardTitle}\nDetailed view for "${partName}" would open here.`);
+            });
+        });
+    </script>
+</body>
+</html>
