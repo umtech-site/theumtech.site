@@ -1058,16 +1058,14 @@
             });
         });
 
-        // Make cards clickable
+        // Make cards clickable - OPEN IN NEW HTML FILE
         document.querySelectorAll('.card.clickable').forEach(card => {
             card.addEventListener('click', function() {
                 const partName = this.getAttribute('data-part');
-                const cardTitle = this.querySelector('.card-header').textContent;
-                alert(`Clicked: ${cardTitle}\nDetailed view for "${partName}" would open here.`);
+                // Open new HTML file based on data-part attribute
+                window.open(partName + '.html', '_blank');
             });
         });
     </script>
 </body>
-
 </html>
-
