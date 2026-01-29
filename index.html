@@ -382,6 +382,7 @@
       z-index: 1;
       text-decoration: none;
       animation: fadeInUp 0.8s ease-out both;
+      cursor: pointer;
     }
 
     .subject-card:nth-child(1) { animation-delay: 0.6s; }
@@ -434,6 +435,223 @@
 
     .subject-card:hover i {
       transform: scale(1.2);
+    }
+
+    .subject-card.locked::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 16px;
+      z-index: 1;
+    }
+
+    .subject-card.locked::before {
+      content: '\f023';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.5rem;
+      color: white;
+      z-index: 2;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    /* Password Modal */
+    .password-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 3rem;
+      z-index: 1000;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      text-align: center;
+      min-width: 350px;
+      max-width: 90vw;
+      border: 2px solid rgba(255,255,255,0.1);
+      transition: transform 0.4s ease;
+    }
+
+    .password-modal.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .password-modal h3 {
+      color: white;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    .password-modal .subject-name {
+      color: var(--secondary-color);
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .password-input-container {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+
+    .password-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1.2rem;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      text-align: center;
+      letter-spacing: 0.3rem;
+      font-family: 'Courier New', monospace;
+      transition: all 0.3s ease;
+    }
+
+    .password-input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 15px rgba(255,111,97,0.3);
+    }
+
+    .password-input::placeholder {
+      letter-spacing: normal;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .toggle-password:hover {
+      color: white;
+    }
+
+    .password-feedback {
+      height: 20px;
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .password-feedback.error {
+      color: #ff6b6b;
+    }
+
+    .password-feedback.success {
+      color: #43e97b;
+    }
+
+    .password-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .password-btn {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn {
+      background: var(--gradient-4);
+      color: white;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(67, 233, 123, 0.3);
+    }
+
+    .cancel-btn {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .cancel-btn:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(255,255,255,0.2);
+      transform: rotate(90deg);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Access Granted Animation */
+    @keyframes accessGranted {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .access-granted {
+      animation: accessGranted 0.5s ease;
+      color: #43e97b !important;
     }
 
     /* Footer with Enhanced Animations */
@@ -625,6 +843,15 @@
         padding: 1.5rem 1rem;
       }
 
+      .password-modal {
+        padding: 2rem;
+        min-width: 300px;
+      }
+
+      .password-buttons {
+        flex-direction: column;
+      }
+
       .footer-links {
         flex-wrap: wrap;
       }
@@ -650,11 +877,51 @@
       .subject-grid {
         grid-template-columns: 1fr;
       }
+
+      .password-modal {
+        padding: 1.5rem;
+        min-width: 280px;
+      }
+
+      .password-modal h3 {
+        font-size: 1.4rem;
+      }
+
+      .password-modal .subject-name {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 
 <body class="night">
+  <!-- Password Modal -->
+  <div class="overlay" id="overlay"></div>
+  <div class="password-modal" id="passwordModal">
+    <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
+    <h3>Enter Access Code</h3>
+    <div class="subject-name" id="subjectName"></div>
+    
+    <div class="password-input-container">
+      <input type="password" class="password-input" id="passwordInput" 
+             placeholder="Enter 4-digit code" maxlength="4" autocomplete="off">
+      <button class="toggle-password" id="togglePassword" type="button">
+        <i class="fas fa-eye"></i>
+      </button>
+    </div>
+    
+    <div class="password-feedback" id="passwordFeedback"></div>
+    
+    <div class="password-buttons">
+      <button class="password-btn cancel-btn" id="cancelBtn">
+        <i class="fas fa-times"></i> Cancel
+      </button>
+      <button class="password-btn submit-btn" id="submitBtn">
+        <i class="fas fa-unlock"></i> Unlock
+      </button>
+    </div>
+  </div>
+
   <button class="toggle-mode" id="modeBtn"><i class="fa-solid fa-sun"></i></button>
 
   <div class="container">
@@ -707,27 +974,34 @@
     <section class="subject-section" id="subjects">
       <h2 class="section-heading">Explore Diagnostic Imaging Modalities</h2>
       <div class="subject-grid">
-        <a href="Ultrasound.html" class="subject-card" style="background: var(--gradient-3);">
+        <div class="subject-card locked" style="background: var(--gradient-3);" 
+             data-url="Ultrasound.html" data-code="0001" data-name="Ultrasound Imaging">
           <i class="fas fa-procedures"></i> Ultrasound Imaging
-        </a>
-        <a href="xray.html" class="subject-card" style="background: var(--gradient-2);">
+        </div>
+        <div class="subject-card locked" style="background: var(--gradient-2);" 
+             data-url="xray.html" data-code="0002" data-name="Radiography (X-ray)">
           <i class="fas fa-x-ray"></i> Radiography (X-ray)
-        </a>
-        <a href="MRI.html" class="subject-card" style="background: var(--gradient-7);">
+        </div>
+        <div class="subject-card locked" style="background: var(--gradient-7);" 
+             data-url="MRI.html" data-code="0003" data-name="Magnetic Resonance">
           <i class="fas fa-magnet"></i> Magnetic Resonance
-        </a>
-        <a href="CT Scan.html" class="subject-card" style="background: var(--gradient-4);">
+        </div>
+        <div class="subject-card locked" style="background: var(--gradient-4);" 
+             data-url="CT Scan.html" data-code="0004" data-name="Computed Tomography">
           <i class="fas fa-brain"></i> Computed Tomography
-        </a>
-        <a href="NM.html" class="subject-card" style="background: var(--gradient-5);">
+        </div>
+        <div class="subject-card locked" style="background: var(--gradient-5);" 
+             data-url="NM.html" data-code="0005" data-name="Nuclear Medicine">
           <i class="fas fa-atom"></i> Nuclear Medicine
-        </a>
-        <a href="fluoroscopy.html" class="subject-card" style="background: var(--gradient-6);">
+        </div>
+        <div class="subject-card locked" style="background: var(--gradient-6);" 
+             data-url="fluoroscopy.html" data-code="0006" data-name="Fluoroscopy">
           <i class="fas fa-video"></i> Fluoroscopy
-        </a>
-        <a href="Subjects/dexa.html" class="subject-card" style="background: var(--gradient-8);">
+        </div>
+        <div class="subject-card locked" style="background: var(--gradient-8);" 
+             data-url="Subjects/dexa.html" data-code="0007" data-name="Bone Densitometry">
           <i class="fas fa-bone"></i> Bone Densitometry
-        </a>
+        </div>
       </div>
     </section>
   </div>
@@ -790,6 +1064,176 @@
     document.querySelectorAll('.profile-container, .subject-section, .subject-card').forEach(el => {
       observer.observe(el);
     });
+
+    // Password Protection System
+    const subjectCards = document.querySelectorAll('.subject-card');
+    const passwordModal = document.getElementById('passwordModal');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('passwordInput');
+    const subjectNameElement = document.getElementById('subjectName');
+    const passwordFeedback = document.getElementById('passwordFeedback');
+
+    let currentCard = null;
+    let unlockedCards = JSON.parse(localStorage.getItem('unlockedCards')) || [];
+
+    // Initialize unlocked cards
+    subjectCards.forEach(card => {
+      const cardName = card.getAttribute('data-name');
+      if (unlockedCards.includes(cardName)) {
+        card.classList.remove('locked');
+        card.style.cursor = 'pointer';
+        card.title = "Click to access";
+      }
+    });
+
+    // Add click event to each subject card
+    subjectCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const cardName = this.getAttribute('data-name');
+        
+        // If card is already unlocked, open it
+        if (unlockedCards.includes(cardName)) {
+          const url = this.getAttribute('data-url');
+          window.open(url, '_blank');
+          return;
+        }
+        
+        // Otherwise, show password modal
+        currentCard = this;
+        const subjectName = this.getAttribute('data-name');
+        
+        // Display subject name in modal
+        subjectNameElement.textContent = subjectName;
+        
+        // Reset modal
+        passwordInput.value = '';
+        passwordFeedback.textContent = '';
+        passwordFeedback.className = 'password-feedback';
+        
+        // Show modal
+        passwordModal.classList.add('active');
+        overlay.classList.add('active');
+        
+        // Focus on password input
+        setTimeout(() => {
+          passwordInput.focus();
+        }, 300);
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Toggle password visibility
+    togglePassword.addEventListener('click', function() {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      this.querySelector('i').classList.toggle('fa-eye');
+      this.querySelector('i').classList.toggle('fa-eye-slash');
+    });
+
+    // Submit password
+    submitBtn.addEventListener('click', validatePassword);
+    passwordInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        validatePassword();
+      }
+    });
+
+    function validatePassword() {
+      const enteredCode = passwordInput.value.trim();
+      const correctCode = currentCard.getAttribute('data-code');
+      const subjectName = currentCard.getAttribute('data-name');
+      
+      if (enteredCode === correctCode) {
+        // Success
+        passwordFeedback.textContent = '✓ Access Granted!';
+        passwordFeedback.className = 'password-feedback success';
+        passwordInput.classList.add('access-granted');
+        
+        // Add to unlocked cards
+        if (!unlockedCards.includes(subjectName)) {
+          unlockedCards.push(subjectName);
+          localStorage.setItem('unlockedCards', JSON.stringify(unlockedCards));
+        }
+        
+        // Unlock the card
+        currentCard.classList.remove('locked');
+        currentCard.style.cursor = 'pointer';
+        currentCard.title = "Click to access";
+        
+        // Open the page after delay
+        setTimeout(() => {
+          const url = currentCard.getAttribute('data-url');
+          closeModal();
+          setTimeout(() => {
+            window.open(url, '_blank');
+          }, 300);
+        }, 1000);
+        
+      } else {
+        // Error
+        passwordFeedback.textContent = '✗ Incorrect code. Try again.';
+        passwordFeedback.className = 'password-feedback error';
+        passwordInput.value = '';
+        passwordInput.focus();
+        
+        // Shake animation
+        passwordInput.style.animation = 'none';
+        setTimeout(() => {
+          passwordInput.style.animation = 'shake 0.5s';
+        }, 10);
+      }
+    }
+
+    // Close modal functions
+    function closeModal() {
+      passwordModal.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      currentCard = null;
+      passwordInput.value = '';
+      passwordFeedback.textContent = '';
+      passwordInput.classList.remove('access-granted');
+      passwordInput.setAttribute('type', 'password');
+      togglePassword.querySelector('i').className = 'fas fa-eye';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && passwordModal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // Shake animation for incorrect password
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Auto-focus on password input when modal opens
+    passwordModal.addEventListener('transitionend', function() {
+      if (passwordModal.classList.contains('active')) {
+        passwordInput.focus();
+      }
+    });
+
+    // Clear all unlocked cards (for testing) - remove in production
+    // localStorage.removeItem('unlockedCards');
   </script>
 </body>
 </html>
